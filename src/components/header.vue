@@ -11,7 +11,7 @@
             required: true
         }
     })
-    defineEmits(['incrementar-Cantidad', 'decrementar-Cantidad', 'agregar-Carrito'])
+    defineEmits(['incrementar-Cantidad', 'decrementar-Cantidad', 'agregar-Carrito', 'eliminar-Producto'])
 
     const totalPagar = computed(()=>{
         return props.carrito.reduce((total, producto)=> total + (producto.cantidad * producto.precio), 0)
@@ -85,6 +85,7 @@
                                             <button
                                                 class="btn btn-danger"
                                                 type="button"
+                                                @click="$emit('eliminar-Producto', producto.id)"
                                             >
                                                 X
                                             </button>
