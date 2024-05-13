@@ -17,19 +17,27 @@
 
     const agregarCarrito = (guitarra) => {
         const existeCarrito = carrito.value.findIndex(producto => producto.id === guitarra.id)
-        if(existeCarrito >= 0){
+        if(existeCarrito >= 0 && carrito.value[existeCarrito].cantidad <5){
             carrito.value[existeCarrito].cantidad++
         }
-        else{
+        else if(existeCarrito === -1){
             guitarra.cantidad = 1
             carrito.value.push(guitarra)
+        }
+        else{
+            return
         }
     }   
     const decrementarCantidad= (id)=>{
         const index = carrito.value.findIndex(producto => producto.id === id)
-        if(carrito.value[index].cantidad <=1) return
-        carrito.value[index].cantidad--
-        console.log(id)
+        if(carrito.value[index].cantidad <=1) {
+            eliminarProducto(id)
+        }
+        else{
+            carrito.value[index].cantidad--
+            console.log(id)
+        }
+        
     }
     const incrementarCantidad= (id)=>{
         const index = carrito.value.findIndex(producto => producto.id === id)
