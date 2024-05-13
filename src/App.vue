@@ -50,6 +50,9 @@
         console.log(id)
         carrito.value = carrito.value.filter(producto => producto.id !== id)
     }
+    const vaciarCarrito = () => {
+        carrito.value = []
+    }
 </script>
 
 <template>
@@ -60,6 +63,7 @@
     @decrementar-Cantidad="decrementarCantidad"
     @agregar-Carrito="agregarCarrito"
     @eliminar-Producto="eliminarProducto"
+    @vaciar-Carrito="vaciarCarrito"
   />
 
   <main class="container-xl mt-5">
